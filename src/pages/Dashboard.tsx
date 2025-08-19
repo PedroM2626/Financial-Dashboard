@@ -1,9 +1,9 @@
-import React from "react";
 import { Card } from "@/components/ui/card";
 import Sidebar from "@/components/dashboard/Sidebar";
 import MetricsCards from "@/components/dashboard/MetricsCards";
 import FinancialCharts from "@/components/dashboard/FinancialCharts";
 import TransactionsTable from "@/components/dashboard/TransactionsTable";
+import { EmailReport } from "@/components/dashboard/EmailReport";
 
 const Dashboard = () => {
   return (
@@ -40,6 +40,24 @@ const Dashboard = () => {
           <Card className="p-6">
             <h2 className="text-xl font-semibold mb-4">Recent Transactions</h2>
             <TransactionsTable />
+          </Card>
+        </div>
+
+        {/* Email Report */}
+        <div className="mb-6">
+          <Card className="p-6">
+            <h2 className="text-xl font-semibold mb-4">Enviar Relatório</h2>
+            <EmailReport 
+              reportData={{
+                title: 'Relatório Financeiro',
+                content: 'Segue em anexo o relatório financeiro solicitado.',
+                htmlContent: `
+                  <h1>Relatório Financeiro</h1>
+                  <p>Segue em anexo o relatório financeiro solicitado.</p>
+                  <p>Data: ${new Date().toLocaleDateString('pt-BR')}</p>
+                `
+              }}
+            />
           </Card>
         </div>
       </div>
